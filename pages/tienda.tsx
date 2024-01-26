@@ -2,6 +2,7 @@ import { GetServerSideProps } from 'next';
 import Layout from '../components/Layout';
 import Beer from '../components/Beer';
 import { Beer as BeerInterface } from '../interfaces/cervezas';
+import styles from '../styles/grid.module.css';
 
 export const getServerSideProps: GetServerSideProps = async () => {
 
@@ -33,11 +34,14 @@ const Store = ({ beers }: StoreProps) => {
         <main className="container">
           <h1 className="heading">Nuestras Cervezas</h1>
 
-          {
-            beers.map( beer => (
-              <Beer key={ beer.id } beer={ beer.attributes } />
-            ))
-          }
+          <div className={styles.grid}>
+            {
+              beers.map( beer => (
+                <Beer key={ beer.id } beer={ beer.attributes } />
+              ))
+            }
+          </div>
+
         </main>
       </Layout>
     </>

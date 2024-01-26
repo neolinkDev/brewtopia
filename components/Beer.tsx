@@ -1,6 +1,7 @@
 import Image from 'next/future/image';
 import { BeerAttributes } from '../interfaces/cervezas';
 import Link from 'next/link';
+import styles from '../styles/cervezas.module.css';
 
 interface BeerListProps {
   beer: BeerAttributes;
@@ -10,28 +11,31 @@ const Beer = ({ beer }: BeerListProps) => {
   const { name, price, style, url, image } = beer;
 
   return (
-    <div>
-      <Image
-        src={image.data.attributes.formats.thumbnail.url}
-        width={76}
-        height={156}
-        alt={`Imagen cerveza ${name}`}
-      />
+    <div className={styles.cerveza}>
+      {/* <div className={styles.content}> */}
 
-      <div>
+      <div className={styles.img_box}>
+        <Image
+          src={image.data.attributes.url}
+          width={154}
+          height={298}
+          alt={`Imagen cerveza ${name}`}
+        />
+      </div>
 
-        <h3>{ name }</h3>
-        <p>{ style }</p>
-        <p>${ price }</p>
+      <div className={styles.content}>
+        <h3>{name}</h3>
+        <p className={styles.style}>{style}</p>
+        <p className={styles.price}>${price}</p>
 
         <Link href={`/cervezas/${url}`}>
-          <a>
-            Ver Cerveza
-          </a>
+          <a className={styles.link}>Ver Cerveza</a>
         </Link>
-
       </div>
-      {/* <Image src={image.data.attributes.url} width={198} height={156} alt={`Imagen cerveza ${name}`} /> */}
+
+      {/* <Image src={image.data.attributes.url} width={198} height={156} alt={`Imagen cerveza ${name}`} /> 
+      image.data.attributes.formats.thumbnail.url
+      */}
     </div>
   );
 };
