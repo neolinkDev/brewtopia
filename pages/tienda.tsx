@@ -4,6 +4,7 @@ import Beer from '../components/Beer';
 import { Beer as BeerInterface } from '../interfaces/cervezas';
 import styles from '../styles/grid.module.css';
 
+//
 export const getServerSideProps: GetServerSideProps = async () => {
 
   const response = await fetch(
@@ -24,7 +25,7 @@ interface StoreProps {
 
 const Store = ({ beers }: StoreProps) => {
 
-  console.log(beers)
+  // console.log(beers)
   return (
     <>
       <Layout
