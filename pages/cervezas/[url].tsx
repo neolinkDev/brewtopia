@@ -10,7 +10,7 @@ interface ItemProps {
   beer: Beer[];
 }
 
-interface IParams extends ParsedUrlQuery {
+export interface IParams extends ParsedUrlQuery {
   url: string;
 }
 

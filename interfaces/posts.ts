@@ -1,24 +1,39 @@
-import { ParsedUrlQuery } from "querystring";
-
-export interface Cervezas {
-  data: Beer[];
+export interface Posts {
+  data: Post[];
   meta: Meta;
 }
 
-export interface Beer {
+export interface Post {
   id: number;
-  attributes: BeerAttributes;
+  attributes: PostAttributes;
 }
 
-export interface BeerAttributes {
-  name: string;
+export interface PostAttributes {
+  title: string;
+  content: Content[];
+  url: string;
   createdAt: Date;
   updatedAt: Date;
   publishedAt: Date;
-  price: number;
-  style: string;
-  url: string;
   image: Image;
+}
+
+export interface Content {
+  type: ContentType;
+  children: Child[];
+}
+
+export interface Child {
+  text: string;
+  type: ChildType;
+}
+
+export enum ChildType {
+  Text = 'text',
+}
+
+export enum ContentType {
+  Paragraph = 'paragraph',
 }
 
 export interface Image {
@@ -43,7 +58,7 @@ export interface DataAttributes {
   size: number;
   url: string;
   previewUrl: null;
-  provider: Provider;
+  provider: string;
   provider_metadata: ProviderMetadata;
   createdAt: Date;
   updatedAt: Date;
@@ -54,10 +69,12 @@ export enum EXT {
 }
 
 export interface Formats {
-  thumbnail: Thumbnail;
+  small: Medium;
+  medium: Medium;
+  thumbnail: Medium;
 }
 
-export interface Thumbnail {
+export interface Medium {
   ext: EXT;
   url: string;
   hash: string;
@@ -83,10 +100,6 @@ export enum ResourceType {
   Image = 'image',
 }
 
-export enum Provider {
-  Cloudinary = 'cloudinary',
-}
-
 export interface Meta {
   pagination: Pagination;
 }
@@ -96,8 +109,4 @@ export interface Pagination {
   pageSize: number;
   pageCount: number;
   total: number;
-}
-
-export interface IParams extends ParsedUrlQuery {
-  url: string;
 }
