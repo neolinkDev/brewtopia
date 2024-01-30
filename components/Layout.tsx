@@ -4,9 +4,9 @@ import Footer from './Footer';
 
 
 interface layoutProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   title: string;
-  description: string;
+  description?: string;
 }
 
 const Layout = ({ children, title, description }: layoutProps) => {

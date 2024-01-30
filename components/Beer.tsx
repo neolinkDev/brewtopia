@@ -8,6 +8,7 @@ interface BeerListProps {
 }
 
 const Beer = ({ beer }: BeerListProps) => {
+  
   const { name, price, style, url, image } = beer;
 
   return (
