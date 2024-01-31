@@ -1,6 +1,8 @@
 import { GetStaticProps, NextPage } from 'next';
 import Layout from '../components/Layout';
-import { Post } from '../interfaces/posts';
+import { Post as PostInterface } from '../interfaces/posts';
+import Post from '../components/Post';
+import styles from '../styles/grid.module.css';
 
 export const getStaticProps: GetStaticProps = async () => {
 
@@ -17,7 +19,7 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 interface BlogProps {
-  posts: Post[]
+  posts: PostInterface[]
 }
 
 const Blog = ({posts}: BlogProps) => {
@@ -31,6 +33,17 @@ const Blog = ({posts}: BlogProps) => {
       >
         <main className="container">
           <h1 className="heading">Blog</h1>
+
+          <div className={styles.grid}>
+            {
+              posts.map(post => (
+                <Post 
+                  key={post.id}
+                  post={post.attributes}
+                />
+              ))
+            }
+          </div>
         </main>
       </Layout>
     </>
