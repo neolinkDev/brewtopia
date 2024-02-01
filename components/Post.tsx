@@ -1,8 +1,8 @@
 import Image from 'next/future/image';
 import Link from 'next/link';
+import { formatDate } from '../utils/helpers';
 import { PostAttributes } from '../interfaces/posts';
 import styles from '../styles/blog.module.css';
-import { formatDate } from '../utils/helpers';
 
 interface PostProps {
   post: PostAttributes;
@@ -25,11 +25,6 @@ const Post = ({ post }: PostProps) => {
         <h3>{title}</h3>
         <p className={styles.date}>{formatDate(publishedAt)}</p>
         <p className={styles.summary}>{paragraph.children[0].text}</p>
-        {/* {
-          content.map((paragraph, i) => (
-            <p key={i} className={styles.summary}>{paragraph.children[0].text}</p>
-          ))
-        } */}
         <Link href={`/blog/${url}`}>
           <a className={styles.link}>
             Leer entrada
