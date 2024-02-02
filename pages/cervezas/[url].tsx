@@ -1,5 +1,4 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-// import { useRouter } from 'next/router';
 import { Beer } from '../../interfaces/cervezas';
 import { ParsedUrlQuery } from 'querystring';
 import Image from 'next/future/image';
