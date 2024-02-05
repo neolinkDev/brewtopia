@@ -4,8 +4,9 @@ import Beer from '../components/Beer';
 import Post from '../components/Post';
 import { Beer as BeerInterface } from '../interfaces/cervezas';
 import { Post as PostInterface } from '../interfaces/posts';
-import { ReviewData } from '../interfaces/review';
+import { ReviewAttributes, ReviewData } from '../interfaces/review';
 import styles from '../styles/grid.module.css'
+import Review from '../components/Review';
 
 //
 export const getStaticProps: GetStaticProps = async () => {
@@ -41,7 +42,7 @@ export const getStaticProps: GetStaticProps = async () => {
 interface HomeProps {
   beers: BeerInterface[]
   posts: PostInterface[]
-  review: ReviewData[]
+  review: ReviewData
 }
 
 const Home = ({beers, posts, review }: HomeProps) => {
@@ -68,6 +69,8 @@ const Home = ({beers, posts, review }: HomeProps) => {
           </div>
 
         </main>
+
+        <Review review={review} />
 
         <section className='container'>
 
