@@ -2,8 +2,7 @@ import Link from 'next/link';
 import Image from 'next/future/image';
 import styles from '../styles/Header.module.css';
 import { useRouter } from 'next/router';
-
-
+import { ShoppingCartIcon } from './Icons';
 
 const Header = () => {
 
@@ -44,6 +43,12 @@ const Header = () => {
           <Link href="/nosotros">
             <a className={ router.pathname === '/nosotros' ? styles.active : '' }>
               Nosotros
+            </a>
+          </Link>
+
+          <Link href='/carrito'>
+            <a>
+              <ShoppingCartIcon />
             </a>
           </Link>
 
