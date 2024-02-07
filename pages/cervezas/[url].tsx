@@ -1,9 +1,10 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { Beer } from '../../interfaces/cervezas';
 import { ParsedUrlQuery } from 'querystring';
+import Layout from '../../components/Layout';
+import { OPTION_VALUES } from '../../consts/constants';
 import Image from 'next/future/image';
 import styles from '../../styles/cervezas.module.css';
-import Layout from '../../components/Layout';
 
 interface ItemProps {
   beer: Beer[];
@@ -78,6 +79,20 @@ const Item = ({ beer }: ItemProps) => {
           <h3>{name}</h3>
           <p className={styles.style}>{style}</p>
           <p className={styles.price}>${price}</p>
+
+          <form className={styles.form}>
+            <label htmlFor="quantity">Cantidad:</label>
+
+            <select id="quantity">
+              <option value={OPTION_VALUES.SELECT}>-- Seleccionar --</option>
+              <option value={OPTION_VALUES.ONE}>1</option>
+              <option value={OPTION_VALUES.SIX}>6</option>
+              <option value={OPTION_VALUES.TWELVE}>12</option>
+              <option value={OPTION_VALUES.TWENTY_FOUR}>24</option>
+            </select>
+
+            <input type="submit" value="Agregar al carrito" />
+          </form>
         </div>
       </div>
     </Layout>
