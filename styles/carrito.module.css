@@ -1,0 +1,22 @@
+
+
+.content {
+  display: grid;
+  align-items: flex-start;
+  gap: 5rem;
+}
+@media (width > 768px){
+  .content {
+    grid-template-columns: 3fr 2fr;
+  }
+}
+
+.cart {
+  padding: 3rem 0;
+}
+
+.summary {
+  background-color: aliceblue;
+  padding: 3rem;
+  border-radius: 1rem;
+}

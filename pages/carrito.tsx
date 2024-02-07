@@ -9,20 +9,22 @@ const Carrito = (props: Props) => {
 
       <main className="container">
         <h1 className="heading">Carrito</h1>
-      </main>
 
-      <div>
+        <div className={styles.content}>
 
-        <div>
-          <h2>Artículos</h2>
+          <div className={styles.cart}>
+            <h2>Artículos</h2>
+          </div>
+
+          <aside className={styles.summary}>
+            <h3>Tu orden</h3>
+            <p>Total a Pagar</p>
+          </aside>
+          
         </div>
 
-        <aside>
-          <h3>Tu orden</h3>
-          <p>Total a Pagar</p>
-        </aside>
-        
-      </div>
+      </main>
+
 
     </Layout>
   );
