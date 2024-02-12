@@ -15,6 +15,42 @@
   padding: 3rem 0;
 }
 
+.item {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 2rem 0;
+  border-bottom: 1px solid aliceblue;
+}
+.item:last-of-type {
+  border: none;
+}
+
+.item p {
+  margin: 0 0 1rem 0;
+}
+
+.item span {
+  font-weight: 900;
+  font-size: 2.9rem;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 4rem;
+}
+
+.price {
+  margin-top: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.subtotal {
+  font-size: 2.2rem;
+}
+
 .summary {
   background-color: aliceblue;
   padding: 3rem;

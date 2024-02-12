@@ -1,9 +1,13 @@
+import Image from 'next/future/image';
 import Layout from '../components/Layout';
+import { CartItem } from '../interfaces';
 import styles from '../styles/carrito.module.css';
 
-interface Props {}
+interface CarritoProps {
+  cart: CartItem[]
+}
 
-const Carrito = (props: Props) => {
+const Carrito = ({cart}: CarritoProps) => {
   return (
     <Layout title="Carrito de Compras">
 
@@ -14,6 +18,31 @@ const Carrito = (props: Props) => {
 
           <div className={styles.cart}>
             <h2>Artículos</h2>
+
+            {
+              cart.length === 0
+                ? 'El carrito de compras está vacío'
+                : (
+                  cart.map((item)=>(
+                    <div
+                      key={item.id}
+                      className={styles.item}
+                    >
+                      <div>
+                        <Image width={76} height={156} src={item.image} alt={item.name} />
+                      </div>
+                      <div>
+                        <p className={styles.name}>{item.name}</p>
+
+                        <p>Cantidad: {item.quantity}</p>
+
+                        <p className={styles.price}>$<span>{item.price}</span></p>
+                        <p className={styles.subtotal}>Subtotal: $<span>{item.quantity * item.price}</span></p>
+                      </div>
+                    </div>
+                  ))
+                )
+            }
           </div>
 
           <aside className={styles.summary}>

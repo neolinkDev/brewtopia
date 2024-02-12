@@ -1,14 +1,13 @@
+import { useState } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { Beer } from '../../interfaces/cervezas';
 import { ParsedUrlQuery } from 'querystring';
 import Layout from '../../components/Layout';
 import { OPTION_VALUES } from '../../consts/constants';
 import Image from 'next/future/image';
+import { CartItem } from '../../interfaces';
 import styles from '../../styles/cervezas.module.css';
 
-interface ItemProps {
-  beer: Beer[];
-}
 
 export interface IParams extends ParsedUrlQuery {
   url: string;
@@ -51,15 +50,41 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-//
-const Item = ({ beer }: ItemProps) => {
 
-  // console.log(beer[0].attributes);
+interface ItemProps {
+  beer: Beer[];
+  addCart: (beer: CartItem) => void
+}
+
+//
+const Item = ({ beer, addCart }: ItemProps) => {
+
+  const [quantity, setQuantity] = useState(0);
 
   const { name, price, style, image } = beer[0].attributes;
 
-  // const router = useRouter();
-  // console.log(router)
+  //
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if(quantity < 1){
+      alert('La cantidad no es válida');
+      return;
+    }
+
+    //
+    const selectedBeer: CartItem = {
+      id: beer[0].id,
+      image: image.data.attributes.url,
+      name,
+      price,
+      quantity
+    }
+
+    // context in nextjs
+    addCart(selectedBeer)
+
+  }
 
   return (
     <Layout title={`Cerveza ${name}`} >
@@ -80,10 +105,16 @@ const Item = ({ beer }: ItemProps) => {
           <p className={styles.style}>{style}</p>
           <p className={styles.price}>${price}</p>
 
-          <form className={styles.form}>
+          <form 
+            className={styles.form}
+            onSubmit={ handleSubmit }
+          >
             <label htmlFor="quantity">Cantidad:</label>
 
-            <select id="quantity">
+            <select 
+              id="quantity"
+              onChange={e => setQuantity(+e.target.value)}
+            >
               <option value={OPTION_VALUES.SELECT}>-- Seleccionar --</option>
               <option value={OPTION_VALUES.ONE}>1</option>
               <option value={OPTION_VALUES.SIX}>6</option>
