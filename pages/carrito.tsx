@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Image from 'next/future/image';
 import Layout from '../components/Layout';
 import { CartItem, QuantityUpdate } from '../interfaces';
@@ -10,6 +11,15 @@ interface CarritoProps {
 }
 
 const Carrito = ({cart, updateQuantity}: CarritoProps) => {
+
+  const [total, setTotal] = useState<number>(0);
+
+  useEffect(() => {
+    const shoppingCartTotal = cart.reduce((total, item)=> total + (item.quantity * item.price), 0);
+    setTotal(shoppingCartTotal);
+  }, [cart])
+  
+
   return (
     <Layout title="Carrito de Compras">
 
@@ -70,7 +80,7 @@ const Carrito = ({cart, updateQuantity}: CarritoProps) => {
 
           <aside className={styles.summary}>
             <h3>Tu orden</h3>
-            <p>Total a Pagar</p>
+            <p>Total a Pagar: ${total}</p>
           </aside>
         </div>
       </main>

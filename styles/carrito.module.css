@@ -62,6 +62,8 @@
 }
 
 .summary {
+  position: sticky;
+  top: 2rem;
   background-color: aliceblue;
   padding: 3rem;
   border-radius: 1rem;
