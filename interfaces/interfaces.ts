@@ -7,3 +7,8 @@ export interface CartItem {
   price: number;
   quantity: number;
 }
+
+export interface QuantityUpdate {
+  id: number;
+  quantity: number;
+}

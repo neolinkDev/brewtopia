@@ -41,8 +41,18 @@
   font-size: 4rem;
 }
 
+.select {
+  /* all: unset; */
+  /* border: 1px solid var(--black); */
+  padding: 1rem;
+  text-align: center;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+  /* cursor: pointer; */
+  /* width: 10%; */
+}
+
 .price {
-  margin-top: 2rem;
   font-weight: 700;
   color: var(--primary);
 }
