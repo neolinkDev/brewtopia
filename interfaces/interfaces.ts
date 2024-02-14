@@ -1,7 +1,8 @@
 
+export type ID = number;
 
 export interface CartItem {
-  id: number;
+  id: ID;
   image: string;
   name: string;
   price: number;
@@ -9,6 +10,6 @@ export interface CartItem {
 }
 
 export interface QuantityUpdate {
-  id: number;
+  id: ID;
   quantity: number;
 }

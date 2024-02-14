@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/future/image';
 import Layout from '../components/Layout';
-import { CartItem, QuantityUpdate } from '../interfaces';
+import { CartItem, ID, QuantityUpdate } from '../interfaces';
 import { OPTION_VALUES } from '../consts/constants';
 import styles from '../styles/carrito.module.css';
 
 interface CarritoProps {
   cart: CartItem[]
   updateQuantity: (beer: QuantityUpdate) => void
+  deleteItem: (id: ID) => void
 }
 
-const Carrito = ({cart, updateQuantity}: CarritoProps) => {
+const Carrito = ({cart, updateQuantity, deleteItem}: CarritoProps) => {
 
   const [total, setTotal] = useState<number>(0);
 
@@ -74,6 +75,13 @@ const Carrito = ({cart, updateQuantity}: CarritoProps) => {
                         Subtotal: $<span>{item.quantity * item.price}</span>
                       </p>
                     </div>
+
+                    <button
+                      className={styles.delete}
+                      onClick={()=> deleteItem(item.id)}
+                    >
+                      X
+                    </button>
                   </div>
                 ))}
           </div>
