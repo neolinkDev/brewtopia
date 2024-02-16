@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { CartItem, QuantityUpdate } from '../interfaces';
@@ -7,8 +7,13 @@ import { ID } from '../interfaces/interfaces';
 
 function MyApp({ Component, pageProps }: AppProps) {
 
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const localStorageCart = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('cart')!) ?? [] : []
 
+  const [cart, setCart] = useState<CartItem[]>(localStorageCart);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart])
   
 
   const addCart = (beer: CartItem) => {
@@ -49,7 +54,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const deleteItem = (id: ID) => {
     const updateCart = cart.filter( item => item.id != id)
     setCart(updateCart)
-    window.localStorage.setItem('carrito', JSON.stringify( cart ));
+    window.localStorage.setItem('cart', JSON.stringify( cart ));
 }
 
   // const addCart = (beer: CartItem) => {

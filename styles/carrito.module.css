@@ -74,7 +74,7 @@
   all: unset;
   position: absolute;
   top: 3rem;
-  right: 1rem;
+  right: 0;
   font-weight: 900;
   color: brown;
 }
