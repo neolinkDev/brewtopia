@@ -13,8 +13,7 @@ const Beer = ({ beer }: BeerListProps) => {
 
   return (
     <div className={styles.cerveza}>
-      {/* <div className={styles.content}> */}
-
+    
       <div className={styles.img_box}>
         <Image
           src={image.data.attributes.url}
@@ -34,9 +33,6 @@ const Beer = ({ beer }: BeerListProps) => {
         </Link>
       </div>
 
-      {/* <Image src={image.data.attributes.url} width={198} height={156} alt={`Imagen cerveza ${name}`} /> 
-      image.data.attributes.formats.thumbnail.url
-      */}
     </div>
   );
 };

@@ -47,8 +47,6 @@ interface HomeProps {
 
 const Home = ({beers, posts, review }: HomeProps) => {
 
-  console.log(review)
-
   return (
     <>
       <Layout

@@ -2,9 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../styles/Footer.module.css';
 
-type Props = {};
-
-const Footer = (props: Props) => {
+const Footer = () => {
   return (
     <footer className={styles.footer}>
 

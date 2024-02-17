@@ -4,10 +4,7 @@ const Document = () => {
   return (
     <Html lang="es">
       <Head>
-        {/* <meta
-          name="description"
-          content="Brewtopia - Venta de cervezas y blog sobre la cultura cervecera"
-        /> */}
+       
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

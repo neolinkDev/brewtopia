@@ -25,7 +25,6 @@ interface StoreProps {
 
 const Store = ({ beers }: StoreProps) => {
 
-  // console.log(beers)
   return (
     <>
       <Layout
