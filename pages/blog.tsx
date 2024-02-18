@@ -24,7 +24,6 @@ interface BlogProps {
 
 const Blog = ({posts}: BlogProps) => {
 
-  console.log(posts)
   return (
     <>
       <Layout
